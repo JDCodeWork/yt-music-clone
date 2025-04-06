@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+import type { Metadata } from "next";
 import { bodyFont } from "@/configs/fonts";
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${bodyFont.className} antialiased`}
+        className={`${bodyFont.className} antialiased overflow-x-hidden`}
       >
         {children}
       </body>
