@@ -12,7 +12,7 @@ export interface Props {
   title: string
   to: string
 }
-export const SideItem = ({ icon: Icon, title, to }: Props) => {
+export const SideLink = ({ icon: Icon, title, to }: Props) => {
   const pathname = usePathname()
   const isOpenMenu = useUiStore(s => s.isOpenSideMenu)
 
@@ -26,20 +26,23 @@ export const SideItem = ({ icon: Icon, title, to }: Props) => {
     <Link
       href={to}
       className={clsx(
-        "block  mb-2 rounded-xl hover:bg-slate-400/25 transition-colors",
+        "block  mb-2 rounded-xl hover:bg-stone-400/25 transition-colors",
         (!isLoading && pathname == to)
-          ? "bg-slate-600/25 font-medium"
+          ? "bg-stone-600/25 font-medium"
           : "",
-        isOpenMenu ? "w-64 px-4 py-3" : "w-16 px-1 py-4"
+        !isLoading && isOpenMenu
+          ? "w-56 px-4 py-3"
+          : "w-16 px-1 py-4"
       )}>
       <div
         className={clsx(
-          "flex", isOpenMenu
-          ? "gap-6 items-center"
-          : "flex-col justify-center items-center gap-1"
+          "flex",
+          !isLoading && isOpenMenu
+            ? "gap-6 items-center"
+            : "flex-col justify-center items-center gap-1"
         )}
       >
-        <Icon className={clsx(isOpenMenu ? "size-7" : "size-6")} />
+        <Icon className="size-7" />
         <span
           className={clsx(isOpenMenu ? "text-lg" : "text-xs text-center")}
         >{title}</span>
