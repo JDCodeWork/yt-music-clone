@@ -12,7 +12,7 @@ export interface Props {
   title: string
   to: string
 }
-export const SideLink = ({ icon: Icon, title, to }: Props) => {
+export const SideLinkItem = ({ icon: Icon, title, to }: Props) => {
   const pathname = usePathname()
   const isOpenMenu = useUiStore(s => s.isOpenSideMenu)
 

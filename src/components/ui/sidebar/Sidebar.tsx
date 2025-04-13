@@ -4,9 +4,10 @@ import Link from "next/link";
 import clsx from "clsx";
 import { AiOutlineMenu } from "react-icons/ai";
 import { toggleSideMenu, useUiStore } from "@/stores";
-import { SideListLinks } from "./side-links/SideListLinks";
+import { SideLinks } from "./side-links/SideLinks";
 import { SideBackground } from "./side-decorations/SideBackground";
 import { SideSeparator } from "./side-decorations/SideSeparator";
+import { SidePlaylist } from "./side-playlist/SidePlaylist";
 
 export const Sidebar = () => {
   const isOpenMenu = useUiStore(s => s.isOpenSideMenu)
@@ -31,8 +32,15 @@ export const Sidebar = () => {
           <img src="https://music.youtube.com/img/on_platform_logo_dark.svg" alt="YouTube Music Logo" className="h-8" />
         </Link>
       </header>
-      <SideListLinks />
-      <SideSeparator />
+      <SideLinks />
+      {
+        isOpenMenu && (
+          <>
+            <SideSeparator />
+            <SidePlaylist />
+          </>
+        )
+      }
     </aside>
   )
 }
