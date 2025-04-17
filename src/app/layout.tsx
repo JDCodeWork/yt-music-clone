@@ -2,6 +2,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { bodyFont } from "@/configs/fonts";
+import { DemoAlert } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "YouTube Music",
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body
         className={`${bodyFont.className} antialiased overflow-x-hidden`}
       >
+        <DemoAlert />
         {children}
       </body>
     </html>
