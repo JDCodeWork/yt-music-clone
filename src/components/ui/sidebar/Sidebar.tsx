@@ -15,7 +15,7 @@ export const Sidebar = () => {
   return (
     <aside
       className={clsx(
-        "fixed p-2 h-screen", isOpenMenu
+        "fixed p-2 h-screen z-10", isOpenMenu
         ? "w-auto"
         : "w-48"
       )}

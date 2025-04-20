@@ -21,7 +21,7 @@ export const DemoAlert = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
-    }, 3000)
+    }, 1500)
 
     return () => {
       clearTimeout(timer)
@@ -43,13 +43,12 @@ export const DemoAlert = () => {
             <IoClose className="size-6" />
           </button>
         </header>
-        <div className="">
+        <div className="pl-6 pr-10">
           <h3 className="text-xl font-bold text-stone-300">Esta no es la aplicación oficial</h3>
           <p className="text-stone-300 mt-2">
             Este es un proyecto de código abierto con el fin de aprender y practicar. No está afiliado a YouTube Music ni a Google. Si deseas ver como funciona el código, puedes visitar el repositorio en <a href="https://github.com/JDCodeWork/yt-music-clone" className="text-stone-50 font-medium hover:underline hover:decoration-1" target="_blank" rel="noreferrer">GitHub</a>.
           </p>
-
-          <div className="mt-8 flex gap-6">
+          <div className="mt-6 flex gap-6">
             <button
               onClick={closeDemoAlert}
               disabled={isLoading}

@@ -1,6 +1,6 @@
 export const BackgroundDecoration = () => {
   return (
-    <div id="background-decoration" className="absolute inset-x-0 h-80 opacity-75">
+    <div id="background-decoration" className="absolute inset-x-0 h-80 opacity-75 z-0">
       <div className="absolute inset-0  scale-x-125 scale-y-150 bg-linear-to-r/oklch from-blue-400 from-10% via-yellow-400 via-40% to-red-400 to-90% blur-lg opacity-15">
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950 from-25% to-transparent"></div>
       </div>
