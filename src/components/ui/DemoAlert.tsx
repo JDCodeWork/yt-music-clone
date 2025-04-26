@@ -39,7 +39,7 @@ export const DemoAlert = () => {
             <Image alt="CodeWorkLogo" src={CodeWorkLogoImg} className="size-8" />
             Aviso importante
           </h2>
-          <button onClick={closeDemoAlert} className="mr-2 text-stone-50 cursor-pointer disabled:cursor-progress disabled:animate-pulse disabled:text-stone-500 transition-colors" disabled={isLoading}>
+          <button onClick={closeDemoAlert} className=" text-stone-50 cursor-pointer disabled:cursor-progress disabled:animate-pulse disabled:text-stone-500 transition-colors" disabled={isLoading}>
             <IoClose className="size-6" />
           </button>
         </header>
