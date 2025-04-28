@@ -4,7 +4,7 @@ import { RiDeleteBin6Line } from "react-icons/ri"
 interface Props {
   name: string
 }
-export const SearchHistory = ({ name }: Props) => {
+export const ResultHistory = ({ name }: Props) => {
   return (
     <div className="flex gap-4 px-6 text-stone-400 items-center hover:bg-stone-800 py-4 cursor-pointer">
       <GoHistory className="size-6" />

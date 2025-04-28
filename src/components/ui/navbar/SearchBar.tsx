@@ -3,20 +3,29 @@
 import { useState } from "react"
 import { IoIosSearch } from "react-icons/io"
 import { MdClear } from "react-icons/md"
-import { SearchSuggest } from "./search-item/SearchSuggest";
-import { SEARCH_HISTORY, SEARCH_SUGGEST } from "@/data/search.data";
-import { SearchHistory } from "./search-item/SearchHistory";
+import { SearchResults, type ResultItem } from "./search-results/SearchResults";
+import { getSearchResults } from "@/services/ui/navbar/get-search-results";
 
 export const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("")
+  const [searchResults, setSearchResults] = useState<ResultItem[] | null>(null)
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value)
+    const value = e.target.value
+
+    setSearchValue(value)
+
+    if (value.length === 0) {
+      setSearchResults(null)
+    } else {
+      setSearchResults(getSearchResults(value))
+    }
   }
 
   const handleClearSearch = () => {
     setSearchValue("")
     document.getElementById("search-bar")?.focus()
+    setSearchResults(null)
   }
 
   return (
@@ -39,20 +48,7 @@ export const SearchBar = () => {
       >
         <MdClear className="size-6 " />
       </button>
-      <div className="hidden peer-focus:block absolute inset-x-0 scale-x-[1.005] right-0 top-[101%] py-4 items-center pr-2 bg-stone-950 rounded-b-lg border border-stone-600 shadow-lg ">
-        <div className="max-h-[400px] overflow-y-auto">
-          {
-            SEARCH_HISTORY.map((item, i) => (
-              <SearchHistory name={item.name} key={i} />
-            ))
-          }
-          {
-            Array.from({ length: 3 }, (_, i) => (
-              <SearchSuggest name={SEARCH_SUGGEST[i].name} key={SEARCH_SUGGEST[i].name} />
-            ))
-          }
-        </div>
-      </div>
+      <SearchResults results={searchResults} />
     </label>
   )
 }

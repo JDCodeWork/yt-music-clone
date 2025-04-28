@@ -1,5 +1,11 @@
 type SearchItem = { name: string }
 
+interface SearchPlayItem extends SearchItem {
+  image: string
+  artist: string
+  views: string
+}
+
 export const SEARCH_HISTORY: SearchItem[] = [
   { name: "perfecta (versión 2023) miranda maria becerra y fmk" },
   { name: "hasta la raíz" },
@@ -8,7 +14,7 @@ export const SEARCH_HISTORY: SearchItem[] = [
   { name: "un angel que me protege" },
   { name: "coincidir" },
   { name: "tengo la camisa negra" }
-]
+];
 
 export const SEARCH_SUGGEST: SearchItem[] = [
   { name: "El Anciano y el Niño" },
@@ -39,7 +45,6 @@ export const SEARCH_SUGGEST: SearchItem[] = [
   { name: "Bzrp Music Sessions, Vol.38" },
   { name: "Dani Ribba: Bzrp Music Sessions, Vol. 24" },
   { name: "Don Patricio: Bzrp Music Sessions, Vol. 25" },
-  { name: "Asi soy yo" },
   { name: "Envidia" },
   { name: "Día De Pago" },
   { name: "Ayer Me Llamó Mi Ex (con Lenny Santos)" },
@@ -52,11 +57,9 @@ export const SEARCH_SUGGEST: SearchItem[] = [
   { name: "RONCA FREESTYLE" },
   { name: "M3" },
   { name: "TATA (remix)" },
-  { name: "Freestyle Session #18" },
   { name: "Atrevido (con Taiu, TATOOL y  ONIRIA  )" },
   { name: "OCTUBRE EN FEBRERO" },
   { name: "Mala Vida (Official Video)" },
-  { name: "Hoy" },
   { name: "Arriba" },
   { name: "Dime Pa Que (con Lil Tecca)" },
   { name: "Serpiente Veneno (con Ele A El Dominio)" },
@@ -108,7 +111,6 @@ export const SEARCH_SUGGEST: SearchItem[] = [
   { name: "Write This Down (con Nieve)" },
   { name: "The Lazy Song" },
   { name: "Wellerman (Sea Shanty)" },
-  { name: "Envidia" },
   { name: "Quien TV" },
   { name: "La Guerra" },
   { name: "Fabuloso" },
@@ -139,10 +141,8 @@ export const SEARCH_SUGGEST: SearchItem[] = [
   { name: "FUMETEO (Remix)" },
   { name: "Tussi" },
   { name: "Infiel" },
-  { name: "Mon Amour (Remix)" },
   { name: "La Trampa es Ley" },
   { name: "Mujeriego" },
-  { name: "Tiago PZK: Bzrp Music Sessions, Vol. 48" },
   { name: "Mírate Bien" },
   { name: "Instagram" },
   { name: "Tití me preguntó" },
@@ -168,7 +168,6 @@ export const SEARCH_SUGGEST: SearchItem[] = [
   { name: "Bandido" },
   { name: "La Oficial" },
   { name: "Caramelo" },
-  { name: "Adan y Eva" },
   { name: "Amor en Coma" },
   { name: "911" },
   { name: "AM" },
@@ -183,8 +182,6 @@ export const SEARCH_SUGGEST: SearchItem[] = [
   { name: "Crush" },
   { name: "FRIKI (Official Video)" },
   { name: "EL TREN" },
-  { name: "Tussi" },
-  { name: "Infiel" },
   { name: "Una Noche en Medellín" },
   { name: "Te Vi" },
   { name: "Ojalá" },
@@ -192,25 +189,142 @@ export const SEARCH_SUGGEST: SearchItem[] = [
   { name: "Esperándote" },
   { name: "Cansado" },
   { name: "Punto Y Aparte" },
-  {name: "Jordan"},
-  {name: "Mario Neta"},
-  {name: "Lo malo de ser bueno"},
-  {name: "Guaya Guaya"},
-  {name: "Hooka (con Plan B)"},
-  {name: "Wasa Wasa"},
-  {name: "Jordan"},
-  {name: "Pa' Que Retozen"},
-  {name: "El Anciano y el Niño"},
-  {name: "Cnv Sound, Vol. 14"},
-  {name: "Mundo de Piedra"},
-  {name: "Flexin'"},
-  {name: "El Diablo Cuenta Su Historia"},
-  {name: "Entrevista a Dios"},
-  {name: "Donde Tal Vez"},
-  {name: "Todo bien"},
-  {name: "Flores"},
-  {name: "Ojitos Chiquitos"},
-  {name: "Lo Intenté"},
-  {name: "Mamá"},
-  {name: "Te Fuiste"}
+  { name: "Jordan" },
+  { name: "Mario Neta" },
+  { name: "Lo malo de ser bueno" },
+  { name: "Wasa Wasa" },
+  { name: "Pa' Que Retozen" },
+  { name: "Cnv Sound, Vol. 14" },
+  { name: "Mundo de Piedra" },
+  { name: "El Diablo Cuenta Su Historia" },
+  { name: "Entrevista a Dios" },
+  { name: "Donde Tal Vez" },
+  { name: "Todo bien" },
+  { name: "Flores" },
+  { name: "Ojitos Chiquitos" },
+  { name: "Lo Intenté" },
+  { name: "Mamá" }
+];
+
+export const SEARCH_PLAY: SearchPlayItem[] = [
+  {
+    image: "https://lh3.googleusercontent.com/yvo0O6-7ae5vtj6pdO_Cv1MzioHdLW4zfACAP4LWZVJ9rd0N5E1jWckEUUgplhbLCjgzeAfw0MX-2fQu7w=w60-h60-s-l90-rj",
+    name: "La Camisa Negra",
+    artist: "Juanes",
+    views: "525 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/fO1lqY2CipnRHPkvevft3d0uf0pvYZykmlbefcqxBXL6t097fey5EEUpx0IrWQTyzf0QVjKNWqAoLFtGmg=w60-h60-l90-rj",
+    name: "A Veces",
+    artist: "Al2 El Aldeano",
+    views: "75 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/DT2pTQVQDRmuuYKJz-XWaNFfcPvgSDODKD_wcuw-wOf0Qyv0YnTnXETlsdBHs6vZKvoqOtXi5-uRM4rX=w60-h60-l90-rj",
+    name: "Te Fuiste",
+    artist: "Blake",
+    views: "41 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/pqMBIon5J37KZDFNmYDfYOYPSv1ErPpZAu5FX4C2QdBHcbIlu7TEF-jN60nSIrP-9uhcMSFgjSuPxyplfg=w60-h60-l90-rj",
+    name: "Dibújame",
+    artist: "Rich Vagos, Samantha Barrón y Nanpa Básico",
+    views: "301 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/RhBYp_sNiHF4YSxcgS2aqTQkozxaGzuX70-nZkhdF2gwlkZbJtrBXacD_fZCr_Y_9_rH_kEgzbwwK1k=w60-h60-l90-rj",
+    name: "Ay bebé",
+    artist: "Yung Dupe, Kimmø y PUGSPUGSPUGS",
+    views: "5.3 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/-on96TD1UDZapBHcu1CkuCr9p6eAll7fqOJMt2SNxZOHxRkOf7zmPdFFAl0q-61jO9Qrh53O6-fzORkq=w60-h60-l90-rj",
+    name: "Mucho para Mí",
+    artist: "Santa RM y Franco Escamilla",
+    views: "282 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/Li-bN0e2BCHlWCn1b4-cMLLWR7VTO1ylXmvxJr4fVvQW3gvfKVVkF1h_ctpY1QMBRHIsnYv5ZeGR51JJ=w60-h60-l90-rj",
+    name: "Flaca",
+    artist: "Nanpa Básico",
+    views: "152 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/7Q6yaf9TgzaCA_oXzXoSVWzRxC5EqSN7ljJsXXBthpqkhhiBr4QQm2WhdMdh6KjCL25Ifsg8Ut4px95R=w60-h60-l90-rj",
+    name: "Me Gustas Tu",
+    artist: "Manu chao",
+    views: "620 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/-JAM3LPNOwPocYMvBXI-jqLAuX0xw4DvPREb20EyqRolNyVKnnl8iDcuHF2WN8KyDULASyUEzPVqaliC=w60-h60-l90-rj",
+    name: "Bugambilia",
+    artist: "Nasa Histoires",
+    views: "166 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/4aMe8qk7jE4BR_fmV_XMNKvHUMSLD6jnAeEP8_NyFhlC5N12ikoSDrv9-NDI-76ejCca4hpaGXo4KIyqRA=w60-h60-l90-rj",
+    name: "Salió El Sol",
+    artist: "Don Omar",
+    views: "960 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/vSTh-qG0kZDGaiIRPslcZx9Ly0z-mTyc-TBSi4q32Zxyv9rVS-7c0RseFcufr38juoA5tQMDhxgbIeo=w60-h60-l90-rj",
+    name: "Lamento Boliviano",
+    artist: "Los Enanitos Verdes",
+    views: "850 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/634EEF7rrGlaOtotZy0YALhIPUUxygEyOG2f8OGaxsVcqg8NkJtmvBVw3Tj2m5KFyZWih7sO5edSrv-v=w60-h60-l90-rj",
+    name: "Cnv Sound, Vol. 14",
+    artist: "Pure Negga, Ziko, Skillz Beatz y Kion Studio",
+    views: "327 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/CJBYBVzccMyb0GBxQnCs-2nKkN5nR5zordXzttOeSRIN8jTiIL44v0_N0pk9wKz_tDtHiSGdZ-oVF4-N=w60-h60-l90-rj",
+    name: "Besame Sin Sentir",
+    artist: "Micro TDH",
+    views: "369 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/Zoo1nKyJ12AqzFLQ-e_4L6bI6iAreFgjxpuoanEXa4oPXYYpCZsEOOWYYcSB9SI1w_JbR8Xf5V5z4Z22=w60-h60-l90-rj",
+    name: "Flor de Loto",
+    artist: "Rabelay y Santa Vela",
+    views: "6.2 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/AlQRWMpRbhkqI9c__Uedoh0ILJ-Xy1c_bs8lIu4WrTbzzJxM9Kxi-qJE-dwfp_6WoCvxGP7j5P46UVX5IQ=w60-h60-l90-rj",
+    name: "A Ella Le Dicen",
+    artist: "Afaz Natural",
+    views: "7.9 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/U3SvuCywhBzY-TsGpF-SfbOp6anXUH6bFwYoY6pb_pgQRSAknNfabLyEyi2Pd0ICA2pNf5PjJGEgkpwa=w60-h60-l90-rj",
+    name: "El Anciano y el Niño",
+    artist: "Cheo Gallego",
+    views: "204 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/UZmerjTXlZwbQzdw_LUCDo-2Dmrejq6bQXJYT_k0RBk20AlSyOMaefOOEp4KuKXnQwzGaYW-twiN4y5w=w60-h60-s-l90-rj",
+    name: "Enamorado tuyo",
+    artist: "Cuarteto de Nos",
+    views: "179 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/7oO30SQlZL84pzcIJff-g5VwtZjQMp7HA-Qds2Y9viRCudYvXtTsVnZjOO1GdZ8YDE_75DAD2lQ7PmPHcQ=w60-h60-l90-rj",
+    name: "Pa' Que Retozen",
+    artist: "Tego Calderon",
+    views: "503 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/u6Q9SDxvZgZGKZ0WjvYtXrVQL6UZf3PyYGo0qrH0YuPMMRbYUIwwbHi3uZCfyVinl6HkZO5DAtVycKiG=w60-h60-l90-rj",
+    name: "Contando Lunares (con Cruz Cafuné)",
+    artist: "Don Patricio",
+    views: "249 M reproducciones"
+  },
+  {
+    image: "https://lh3.googleusercontent.com/Qj_7UTXE25Or8eD3x-4jiwsPzx09mf75GNbPglwjD_fG7UOzDD4E80XdzcKS3rYbqGcW1R_eDKZwfmA=w60-h60-s-l90-rj",
+    name: "La Vuelta Al Mundo",
+    artist: "Calle 13",
+    views: "442 M reproducciones"
+  }
 ]

@@ -1,0 +1,1 @@
+Array.from(document.querySelectorAll("ytmusic-responsive-list-item-renderer.ytmusic-playlist-shelf-renderer > div:nth-child(5) > div:nth-child(1) > yt-formatted-string:nth-child(1) > a:nth-child(1)")).map(v => v?.innerText).reduce((acc, val) => { acc.push({ name: val }); return acc }, [])
