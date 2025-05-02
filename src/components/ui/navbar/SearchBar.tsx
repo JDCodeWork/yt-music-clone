@@ -30,9 +30,9 @@ export const SearchBar = () => {
 
   return (
     <label
-      className="px-6 py-2 flex relative gap-4 items-center bg-stone-600/35 border border-stone-600 rounded-lg w-1/2 group hover:bg-stone-600/50 transition-[border-color] cursor-pointer has-focus:rounded-b-none has-focus:bg-stone-950 has-focus:cursor-default"
+      className="px-6 py-2 flex relative gap-4 items-center bg-stone-600/35 border border-stone-600 rounded-lg w-1/2 group/search hover:bg-stone-600/50 transition-[border-color] cursor-pointer has-focus:rounded-b-none has-focus:bg-stone-950 has-focus:cursor-default"
     >
-      <IoIosSearch className="size-6 text-stone-500 group-focus-within:text-stone-200" />
+      <IoIosSearch className="size-6 text-stone-500 group-focus-within/search:text-stone-200" />
       <input
         type="text"
         name="search-bar"
@@ -43,7 +43,8 @@ export const SearchBar = () => {
         onChange={handleSearchChange}
       />
       <button
-        className="visible peer-placeholder-shown:invisible cursor-pointer text-stone-400 hover:text-stone-300  group-focus-within:text-stone-200 transition-colors"
+        type="button"
+        className="visible peer-placeholder-shown:invisible cursor-pointer text-stone-400 hover:text-stone-300  group-focus-within/search:text-stone-200 transition-colors"
         onClick={handleClearSearch}
       >
         <MdClear className="size-6 " />
