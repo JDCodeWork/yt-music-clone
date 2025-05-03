@@ -1,13 +1,16 @@
 "use client";
 
-import { useState } from "react"
 import { IoIosSearch } from "react-icons/io"
 import { MdClear } from "react-icons/md"
-import { SearchResults, type ResultItem } from "./search-results/SearchResults";
+
+import { setSearchValue, useUiStore } from "@/stores";
 import { getSearchResults } from "@/services/ui/navbar/get-search-results";
+import { SearchResults, type ResultItem } from "./search-results/SearchResults";
+import { useRef, useState } from "react";
 
 export const SearchBar = () => {
-  const [searchValue, setSearchValue] = useState("")
+  const searchValue = useUiStore(s => s.searchValue)
+
   const [searchResults, setSearchResults] = useState<ResultItem[] | null>(null)
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {

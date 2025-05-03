@@ -32,14 +32,14 @@ export const DemoAlert = () => {
   if (isOpen) return (
     <div className="w-screen h-screen fixed top-0 left-0 bg-black/50 z-40 flex items-center justify-center">
       <div
-        className="flex flex-col gap-6 w-full max-w-[50%] max-h-[50%] bg-stone-900 px-4 py-6 z-50 rounded-lg"
+        className="flex flex-col gap-6 w-full max-w-2xl max-h-xl bg-stone-900 px-4 py-6 z-50 rounded-lg"
       >
         <header className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-medium text-stone-200 flex gap-4 justify-center items-center">
             <Image alt="CodeWorkLogo" src={CodeWorkLogoImg} className="size-8" />
             Aviso importante
           </h2>
-          <button onClick={closeDemoAlert} className=" text-stone-50 cursor-pointer disabled:cursor-progress disabled:animate-pulse disabled:text-stone-500 transition-colors" disabled={isLoading}>
+          <button type="button" onClick={closeDemoAlert} className=" text-stone-50 cursor-pointer disabled:cursor-progress disabled:animate-pulse disabled:text-stone-500 transition-colors" disabled={isLoading}>
             <IoClose className="size-6" />
           </button>
         </header>
@@ -50,6 +50,7 @@ export const DemoAlert = () => {
           </p>
           <div className="mt-6 flex gap-6">
             <button
+              type="button"
               onClick={closeDemoAlert}
               disabled={isLoading}
               className="px-6 py-2 bg-stone-600 text-stone-200 rounded-full  hover:bg-stone-700 transition-colors cursor-pointer disabled:cursor-progress disabled:animate-pulse disabled:bg-stone-700 disabled:text-stone-300"
