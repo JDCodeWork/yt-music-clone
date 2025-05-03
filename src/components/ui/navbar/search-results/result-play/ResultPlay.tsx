@@ -1,18 +1,23 @@
 "use client";
 
-import type { ResultItem } from "../SearchResults"
 import { FaPlay } from "react-icons/fa"
 import { separateAuthors } from "@/lib/separate-authors";
 import { PlayOptionsBtn } from "./PlayOptionsBtn";
 import { ArtistsLinks } from "./ArtistsLinks";
 import { setSearchValue } from "@/stores";
+import clsx from "clsx";
+import type { SearchPlayItem } from "@/data/search.data";
 
+interface Props {
+  data: SearchPlayItem
+  isSelected: boolean
+}
 export const ResultPlay = ({
-  name,
-  image = "",
-  artist: rawAuthors = "",
-  views = ""
-}: ResultItem) => {
+  data,
+  isSelected
+}: Props) => {
+  const { name, artist: rawAuthors, image, views } = data
+
   const handlePlay = () => {
     setSearchValue(name)
 
@@ -24,7 +29,7 @@ export const ResultPlay = ({
 
   return (
     <div
-      className="flex gap-5 px-4 text-stone-200 items-center hover:bg-stone-800 py-2 cursor-pointer group/play"
+      className={clsx("flex gap-5 px-4 text-stone-200 items-center hover:bg-stone-800 py-2 cursor-pointer group/play border-l-2 border-transparent", isSelected && "bg-stone-800 border-l-sky-600")}
       onMouseDown={handlePlay}
     >
       {/* Image */}
@@ -42,7 +47,7 @@ export const ResultPlay = ({
           <span className="inline-block max-w-[60%] items-center overflow-hidden whitespace-nowrap text-ellipsis">• {views}</span>
         </p>
       </div>
-      <PlayOptionsBtn />
+      <PlayOptionsBtn isVisible={isSelected} />
     </div >
   )
 }

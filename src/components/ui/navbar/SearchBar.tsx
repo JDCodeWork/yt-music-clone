@@ -1,25 +1,57 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { IoIosSearch } from "react-icons/io"
 import { MdClear } from "react-icons/md"
 
-import { setIsOpenSearch, setSearchValue, useUiStore } from "@/stores";
+import { setSearchValue, useUiStore } from "@/stores";
 import { getSearchResults } from "@/services/ui/navbar/get-search-results";
-import { SearchResults, type ResultItem } from "./search-results/SearchResults";
-import { useRef, useState } from "react";
+import { SearchResults } from "./search-results/SearchResults";
+import { SEARCH_HISTORY, type SearchResultItem } from "@/data/search.data";
+
+const history = SEARCH_HISTORY.slice(0, 6)
 
 export const SearchBar = () => {
   const searchValue = useUiStore(s => s.searchValue)
 
-  const [searchResults, setSearchResults] = useState<ResultItem[] | null>(null)
+  const [initialSearchValue, setInitialSearchValue] = useState('')
+  const [searchResults, setSearchResults] = useState<SearchResultItem[]>(history)
+  const [selectedResult, setSelectedResult] = useState(-1)
+
+  const inputRef = useRef<HTMLInputElement | null>(null)
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowDown" && selectedResult < searchResults.length - 1) {
+      setSelectedResult(prev => prev + 1)
+    }
+
+    if (e.key === "ArrowUp" && selectedResult >= -1) {
+      setSelectedResult(prev => prev - 1)
+    }
+
+    if (e.key === "Enter" && selectedResult >= 0) {
+      inputRef.current?.blur()
+    }
+
+    if (e.key === "Escape") {
+      setSearchValue(initialSearchValue)
+      setSelectedResult(-1)
+      inputRef.current?.blur()
+    }
+  }
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
 
+    if (selectedResult !== -1) {
+      setSelectedResult(-1)
+    }
+
     setSearchValue(value)
+    setInitialSearchValue(value)
 
     if (value.length === 0) {
-      setSearchResults(null)
+      setSearchResults(history)
     } else {
       setSearchResults(getSearchResults(value))
     }
@@ -27,9 +59,23 @@ export const SearchBar = () => {
 
   const handleClearSearch = () => {
     setSearchValue("")
-    document.getElementById("search-bar")?.focus()
-    setSearchResults(null)
+    setInitialSearchValue("")
+
+    inputRef.current?.focus()
+    setSearchResults(history)
   }
+
+  useEffect(() => {
+    const activeResult = searchResults[selectedResult]
+
+    if (selectedResult === -1) {
+      return setSearchValue(initialSearchValue)
+    }
+
+    if (activeResult?.type !== "playable") {
+      setSearchValue(activeResult?.name)
+    }
+  }, [searchResults, selectedResult, initialSearchValue]);
 
   return (
     <label
@@ -37,6 +83,7 @@ export const SearchBar = () => {
     >
       <IoIosSearch className="size-6 text-stone-500 group-focus-within/search:text-stone-200" />
       <input
+        ref={inputRef}
         type="text"
         name="search-bar"
         id="search-bar"
@@ -44,6 +91,7 @@ export const SearchBar = () => {
         className="w-full font-medium text-stone-300 placeholder:text-stone-400 focus:outline-none focus:ring-0 focus:text-stone-50 peer"
         value={searchValue}
         onChange={handleSearchChange}
+        onKeyDown={handleKeyDown}
       />
       <button
         type="button"
@@ -52,7 +100,7 @@ export const SearchBar = () => {
       >
         <MdClear className="size-6 " />
       </button>
-      <SearchResults results={searchResults} />
+      <SearchResults selected={selectedResult} results={searchResults} />
     </label>
   )
 }

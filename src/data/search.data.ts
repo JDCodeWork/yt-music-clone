@@ -1,10 +1,12 @@
-type SearchItem = { name: string }
+export type SearchItem = { name: string, type: 'history' | 'suggest' | 'playable' }
 
-interface SearchPlayItem extends SearchItem {
+export interface SearchPlayItem extends SearchItem {
   image: string
   artist: string
   views: string
 }
+
+export type SearchResultItem = SearchItem | SearchPlayItem
 
 export const SEARCH_HISTORY: SearchItem[] = [
   { name: "perfecta (versión 2023) miranda maria becerra y fmk" },
@@ -14,7 +16,7 @@ export const SEARCH_HISTORY: SearchItem[] = [
   { name: "un angel que me protege" },
   { name: "coincidir" },
   { name: "tengo la camisa negra" }
-];
+].map(val => ({ ...val, type: "history" }));
 
 export const SEARCH_SUGGEST: SearchItem[] = [
   { name: "El Anciano y el Niño" },
@@ -204,7 +206,7 @@ export const SEARCH_SUGGEST: SearchItem[] = [
   { name: "Ojitos Chiquitos" },
   { name: "Lo Intenté" },
   { name: "Mamá" }
-];
+].map(val => ({ ...val, type: "suggest" }));
 
 export const SEARCH_PLAY: SearchPlayItem[] = [
   {
@@ -327,4 +329,4 @@ export const SEARCH_PLAY: SearchPlayItem[] = [
     artist: "Calle 13",
     views: "442 M reproducciones"
   }
-]
+].map(val => ({ ...val, type: "playable" }))

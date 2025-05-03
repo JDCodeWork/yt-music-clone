@@ -1,8 +1,12 @@
 "use client";
 
+import clsx from "clsx";
 import { SlOptionsVertical } from "react-icons/sl"
 
-export const PlayOptionsBtn = () => {
+interface Props {
+  isVisible?: boolean
+}
+export const PlayOptionsBtn = ({ isVisible }: Props) => {
   const handleOptions = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
@@ -13,7 +17,7 @@ export const PlayOptionsBtn = () => {
   return (
     <button
       type="button"
-      className="invisible group-hover/play:visible ml-auto hover:bg-stone-600 p-3 rounded-full cursor-pointer"
+      className={clsx("invisible group-hover/play:visible ml-auto hover:bg-stone-600 p-3 rounded-full cursor-pointer", isVisible && "visible")}
       onMouseDown={handleOptions}
     >
       <SlOptionsVertical className="size-4" />

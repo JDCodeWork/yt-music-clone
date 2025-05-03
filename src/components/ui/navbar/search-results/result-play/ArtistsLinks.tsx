@@ -9,14 +9,14 @@ export const ArtistsLinks = ({ artists }: Props) => {
         const isSecondToLast = idx === artists.length - 2
 
         return (
-          <>
+          <span key={artist}>
             {artists.length === 2 ? " " : ""}
             {isLast && artists.length > 1 ? "y " : ""}
-            <span key={artist} className="hover:underline cursor-pointer">
+            <span className="hover:underline cursor-pointer">
               {artist}
             </span>
             {!isLast && (artist.length === 2 || !isSecondToLast) ? ", " : ""}
-          </>
+          </span>
         )
       })}
     </span>
