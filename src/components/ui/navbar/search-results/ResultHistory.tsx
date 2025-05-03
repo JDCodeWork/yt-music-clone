@@ -10,16 +10,20 @@ interface Props {
 }
 export const ResultHistory = ({ name }: Props) => {
   const handleSearch = () => {
-
-    setSearchValue(name)
+    setSearchValue(name);
   }
 
-  const handleDelete = () => alert("TODO: delete history")
+  const handleDelete = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    alert("TODO: Delete")
+  }
 
   return (
     <div
       className="flex gap-6 pl-5 pr-6 text-stone-400 items-center hover:bg-stone-800 py-4 cursor-pointer"
-      onClick={handleSearch}
+      onMouseDown={handleSearch}
       onKeyDown={(e) => {
         if (e.key === "Enter") {
           handleSearch()
@@ -31,7 +35,7 @@ export const ResultHistory = ({ name }: Props) => {
       <button
         type="button"
         className="hover:text-stone-200 ml-auto"
-        onClick={handleDelete}
+        onMouseDown={handleDelete}
       >
         <RiDeleteBin6Line className="size-5 scale-y-125" />
       </button>

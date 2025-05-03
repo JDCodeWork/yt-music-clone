@@ -3,22 +3,18 @@
 import { SlOptionsVertical } from "react-icons/sl"
 
 export const PlayOptionsBtn = () => {
-  const handleOptions = () => alert("TODO: Show options")
+  const handleOptions = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+
+    alert("TODO: Options")
+  }
 
   return (
     <button
       type="button"
       className="invisible group-hover/play:visible ml-auto hover:bg-stone-600 p-3 rounded-full cursor-pointer"
-      onClick={(e) => {
-        e.stopPropagation()
-        handleOptions()
-      }}
-      onKeyDown={(e) => {
-        if (e.key === "Enter") {
-          e.stopPropagation()
-          handleOptions()
-        }
-      }}
+      onMouseDown={handleOptions}
     >
       <SlOptionsVertical className="size-4" />
     </button>

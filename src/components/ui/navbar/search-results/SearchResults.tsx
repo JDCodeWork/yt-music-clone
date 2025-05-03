@@ -24,7 +24,7 @@ export const SearchResults = ({
   return (
     <div
       className="hidden peer-focus:block absolute inset-x-0 scale-x-[1.005] right-0 top-[101%] py-4 items-center pr-2 bg-stone-950 rounded-b-lg border border-stone-600 shadow-lg "
-      
+
     >
       <div className="max-h-[450px] overflow-y-auto">
         {

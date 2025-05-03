@@ -5,6 +5,7 @@ import { FaPlay } from "react-icons/fa"
 import { separateAuthors } from "@/lib/separate-authors";
 import { PlayOptionsBtn } from "./PlayOptionsBtn";
 import { ArtistsLinks } from "./ArtistsLinks";
+import { setSearchValue } from "@/stores";
 
 export const ResultPlay = ({
   name,
@@ -12,7 +13,11 @@ export const ResultPlay = ({
   artist: rawAuthors = "",
   views = ""
 }: ResultItem) => {
-  const handlePlay = () => alert("TODO: Play song")
+  const handlePlay = () => {
+    setSearchValue(name)
+
+    alert("TODO: Play song")
+  }
 
   // TODO: Make artist a link
   const artists = separateAuthors(rawAuthors)
@@ -20,10 +25,7 @@ export const ResultPlay = ({
   return (
     <div
       className="flex gap-5 px-4 text-stone-200 items-center hover:bg-stone-800 py-2 cursor-pointer group/play"
-      onClick={handlePlay}
-      onKeyDown={(e) => {
-        if (e.key === "Enter") handlePlay()
-      }}
+      onMouseDown={handlePlay}
     >
       {/* Image */}
       <div className="relative size-8 rounded-xs">

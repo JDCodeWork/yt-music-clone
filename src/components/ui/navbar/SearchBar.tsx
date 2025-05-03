@@ -3,7 +3,7 @@
 import { IoIosSearch } from "react-icons/io"
 import { MdClear } from "react-icons/md"
 
-import { setSearchValue, useUiStore } from "@/stores";
+import { setIsOpenSearch, setSearchValue, useUiStore } from "@/stores";
 import { getSearchResults } from "@/services/ui/navbar/get-search-results";
 import { SearchResults, type ResultItem } from "./search-results/SearchResults";
 import { useRef, useState } from "react";
