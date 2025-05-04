@@ -6,5 +6,3 @@ export const toggleSideMenu = () => useUiStore.setState(s => s.isOpenSideMenu
 )
 
 export const setSearchValue = (value: string) => useUiStore.setState(() => ({ searchValue: value }))
-
-export const setIsOpenSearch = (value: boolean) => useUiStore.setState(() => ({ isOpenSearch: value }))

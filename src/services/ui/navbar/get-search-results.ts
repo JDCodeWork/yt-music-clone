@@ -1,8 +1,7 @@
-import type { ResultItem } from '@/components/ui/navbar/search-results/SearchResults'
-import { SEARCH_HISTORY, SEARCH_PLAY, SEARCH_SUGGEST } from '@/data/search.data'
+import { SEARCH_HISTORY, SEARCH_PLAY, SEARCH_SUGGEST, type SearchPlayItem } from '@/data/search.data'
 import fzSearch from 'fuzzysearch-ts'
 
-export const getSearchResults = (searchValue: string): ResultItem[] => {
+export const getSearchResults = (searchValue: string): SearchPlayItem[] => {
   const historyResults = SEARCH_HISTORY
     .filter(item => fzSearch(searchValue.toLowerCase(), item.name.toLowerCase()))
     .map(item => ({ ...item, type: 'history' })).slice(0, 2)
@@ -17,5 +16,5 @@ export const getSearchResults = (searchValue: string): ResultItem[] => {
 
   const allResults = [...historyResults, ...suggestResults, ...playableResults]
 
-  return allResults as ResultItem[]
+  return allResults as SearchPlayItem[]
 }

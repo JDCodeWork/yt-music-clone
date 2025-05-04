@@ -1,6 +1,6 @@
 "use client";
 
-import type { SearchResultItem } from "@/data/search.data";
+import type { SearchPlayItem, SearchResultItem } from "@/data/search.data";
 import { ResultHistory } from "./ResultHistory"
 import { ResultSuggest } from "./ResultSuggest"
 import { ResultPlay } from "./result-play/ResultPlay"
@@ -35,7 +35,7 @@ export const SearchResults = ({
               : <ResultPlay
                 key={`${result.name}/${result.type}`}
                 isSelected={selected === idx}
-                data={result}
+                data={result as SearchPlayItem}
               />
           )
         }
