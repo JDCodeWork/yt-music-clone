@@ -1,6 +1,6 @@
 import { NavBackground } from "./NavBackground"
+import { NavBody } from "./nav-body/nav-body/NavBody"
 import { NavHeader } from "./NavHeader"
-import { SearchBar } from "./SearchBar"
 
 export const Navbar = () => {
   return (
@@ -9,10 +9,7 @@ export const Navbar = () => {
     >
       <NavBackground />
       <NavHeader />
-      {/* Nav Body */}
-      <div className="ml-8 flex-1 py-1">
-        <SearchBar />
-      </div>
+      <NavBody />
     </div>
   )
 }
