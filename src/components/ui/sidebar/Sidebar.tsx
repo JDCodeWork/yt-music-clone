@@ -1,9 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import clsx from "clsx";
-import { AiOutlineMenu } from "react-icons/ai";
-import { toggleSideMenu, useUiStore } from "@/stores";
+import { useUiStore } from "@/stores";
+
 import { SideLinks } from "./side-links/SideLinks";
 import { SideBackground } from "./side-decorations/SideBackground";
 import { SideSeparator } from "./side-decorations/SideSeparator";

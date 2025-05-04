@@ -1,7 +1,7 @@
 import type { SearchResultItem } from "@/data/search.data"
 import { getSearchResults } from "@/services/ui/navbar/get-search-results"
 import { setSearchValue, useUiStore } from "@/stores"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 
 interface Props {
   initialResults: SearchResultItem[]
