@@ -20,7 +20,7 @@ export const SideBackground = () => {
   return (
     <div
       className={clsx(
-        "absolute top-0 left-0 border-r-2 -z-10 transition-colors duration-300 h-full w-[82px]",
+        "absolute top-0 left-0 border-r-2 -z-20 transition-colors duration-300 h-full w-[82px]",
         isOpenMenu || isScrolled
           ? "bg-stone-950 border-stone-900"
           : "bg-transparent border-transparent",

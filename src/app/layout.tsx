@@ -20,7 +20,7 @@ export default function RootLayout({
       <body
         className={`${bodyFont.className} antialiased overflow-x-hidden w-screen h-screen`}
       >
-        <DemoAlert />
+        {/* <DemoAlert /> */}
         <Sidebar />
         <Navbar />
         {children}

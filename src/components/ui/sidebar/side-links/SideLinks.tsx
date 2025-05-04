@@ -1,6 +1,6 @@
 import { FaRegCompass } from "react-icons/fa6"
 import { MdHomeFilled, MdOutlineLibraryMusic } from "react-icons/md"
-import { SideLinkItem, Props as SideItemProps } from "./SideLinkItem"
+import { SideLinkItem, type Props as SideItemProps } from "./SideLinkItem"
 
 const SECTIONS: SideItemProps[] = [
   { icon: MdHomeFilled, title: "Principal", to: "/" },
