@@ -1,5 +1,5 @@
 import { NavBackground } from "./NavBackground"
-import { NavBody } from "./nav-body/nav-body/NavBody"
+import { NavBody } from "./nav-body/NavBody"
 import { NavHeader } from "./NavHeader"
 
 export const Navbar = () => {
