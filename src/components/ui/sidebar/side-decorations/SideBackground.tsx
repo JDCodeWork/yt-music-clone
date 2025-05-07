@@ -1,8 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useUiStore } from "@/stores";
 import clsx from "clsx";
+
+export const styles = {
+  default: "absolute top-0 left-0 border-r-2 -z-20 transition-colors duration-300 h-full w-[82px]",
+  active: "bg-stone-950 border-stone-900",
+  inactive: "bg-transparent border-transparent",
+  expanded: "transition-none w-auto inset-0"
+}
+
 
 export const SideBackground = () => {
   const isOpenMenu = useUiStore(s => s.isOpenSideMenu)
@@ -10,22 +18,25 @@ export const SideBackground = () => {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 0)
+    console.log("scrollY ", window.scrollY)
 
-    document.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll)
 
     return () => {
-      document.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scroll', handleScroll)
     }
   }, []);
+
   return (
     <div
+      role="presentation"
+      aria-label="sidebar background"
       className={clsx(
-        "absolute top-0 left-0 border-r-2 -z-20 transition-colors duration-300 h-full w-[82px]",
+        styles.default,
         isOpenMenu || isScrolled
-          ? "bg-stone-950 border-stone-900"
-          : "bg-transparent border-transparent",
-        isOpenMenu && "transition-none duration-150 w-auto inset-0",
-        !isOpenMenu && isScrolled && ""
+          ? styles.active
+          : styles.inactive,
+        isOpenMenu && styles.expanded,
       )}
     />
   )
