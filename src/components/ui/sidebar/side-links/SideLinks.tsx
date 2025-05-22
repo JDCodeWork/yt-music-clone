@@ -1,12 +1,6 @@
-import { FaRegCompass } from "react-icons/fa6"
-import { MdHomeFilled, MdOutlineLibraryMusic } from "react-icons/md"
-import { SideLinkItem, type Props as SideItemProps } from "./SideLinkItem"
+import { SECTIONS } from "@/data/routes.data"
 
-const SECTIONS: SideItemProps[] = [
-  { icon: MdHomeFilled, title: "Principal", to: "/" },
-  { icon: FaRegCompass, title: "Explorar", to: "/explore" },
-  { icon: MdOutlineLibraryMusic, title: "Biblioteca", to: "/library" }
-]
+import { SideLinkItem } from "./SideLinkItem"
 
 export const SideLinks = () => {
   return (

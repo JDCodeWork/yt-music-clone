@@ -1,11 +1,38 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link"
+import { usePathname } from "next/navigation";
 import type { IconType } from "react-icons"
 import clsx from "clsx";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+
 import { useUiStore } from "@/stores";
+
+export const styles = {
+  container: {
+    base: "block  mb-2 rounded-xl hover:bg-stone-400/25 transition-colors",
+
+    status: {
+      default: "w-16 px-1 py-4",
+      expanded: "w-56 px-4 py-3",
+      active: "bg-stone-600/25 font-medium",
+    }
+  },
+  body: {
+    base: "flex",
+
+    status: {
+      default: "flex-col justify-center items-center gap-1",
+      expanded: "gap-6 items-center"
+    }
+  },
+  title: {
+    status: {
+      default: "text-xs text-center",
+      expanded: "text-lg"
+    }
+  }
+}
 
 export interface Props {
   icon: IconType
@@ -14,8 +41,10 @@ export interface Props {
 }
 export const SideLinkItem = ({ icon: Icon, title, to }: Props) => {
   const pathname = usePathname()
+
   const isOpenMenu = useUiStore(s => s.isOpenSideMenu)
 
+  // Informs if it is loading on its first rendering
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -24,27 +53,26 @@ export const SideLinkItem = ({ icon: Icon, title, to }: Props) => {
 
   return (
     <Link
+      aria-label={`navigate to ${title.toLowerCase()} page`}
       href={to}
       className={clsx(
-        "block  mb-2 rounded-xl hover:bg-stone-400/25 transition-colors",
-        (!isLoading && pathname == to)
-          ? "bg-stone-600/25 font-medium"
-          : "",
+        styles.container.base,
+        (!isLoading && pathname === to) && styles.container.status.active,
         !isLoading && isOpenMenu
-          ? "w-56 px-4 py-3"
-          : "w-16 px-1 py-4"
+          ? styles.container.status.expanded
+          : styles.container.status.default
       )}>
       <div
         className={clsx(
-          "flex",
+          styles.body.base,
           !isLoading && isOpenMenu
-            ? "gap-6 items-center"
-            : "flex-col justify-center items-center gap-1"
+            ? styles.body.status.expanded
+            : styles.body.status.default
         )}
       >
         <Icon className="size-7" />
         <span
-          className={clsx(isOpenMenu ? "text-lg" : "text-xs text-center")}
+          className={clsx(isOpenMenu ? styles.title.status.expanded : styles.title.status.default)}
         >{title}</span>
       </div>
     </Link>

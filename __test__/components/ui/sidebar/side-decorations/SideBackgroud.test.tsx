@@ -1,17 +1,20 @@
 import { describe, expect, it, vi, beforeEach, type Mock, afterEach } from 'vitest'
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/dom'
 
 import { SideBackground, styles } from '@/components/ui/sidebar/side-decorations/SideBackground'
 import { useUiStore } from '@/stores'
 
+// Mocks
+const mockUseUiStore = useUiStore as unknown as Mock
+
 vi.mock('@/stores', () => ({
   useUiStore: vi.fn()
 }))
 
-describe('SideBackground', () => {
+describe('SideBackground component', () => {
   beforeEach(() => {
-    (useUiStore as unknown as Mock).mockClear()
+    mockUseUiStore.mockClear()
   })
 
   afterEach(() => {
@@ -20,7 +23,7 @@ describe('SideBackground', () => {
 
   it('should render with transparent background when menu is closed and not scrolled', () => {
     // Mocked isOpenSideMenu to false
-    (useUiStore as unknown as Mock).mockReturnValue(false)
+    mockUseUiStore.mockReturnValue(false)
     render(<SideBackground />)
 
     expect(
@@ -30,7 +33,7 @@ describe('SideBackground', () => {
 
   it('should render with background when menu is open and not scrolled', () => {
     // Mocked isOpenSideMenu to true
-    (useUiStore as unknown as Mock).mockReturnValue(true)
+    mockUseUiStore.mockReturnValue(true)
     render(<SideBackground />)
 
     const backgroundElement = screen.getByRole('presentation', { name: "sidebar background" })
@@ -41,7 +44,7 @@ describe('SideBackground', () => {
 
   it('should render with background when menu is closed and scrolled', async () => {
     // Mocked isOpenSideMenu to false
-    (useUiStore as unknown as Mock).mockReturnValue(false)
+    mockUseUiStore.mockReturnValue(false)
     render(<SideBackground />)
 
     const backgroundElement = screen.getByRole('presentation', { name: "sidebar background" })
