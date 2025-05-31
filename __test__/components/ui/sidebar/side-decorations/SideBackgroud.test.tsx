@@ -2,13 +2,13 @@ import { describe, expect, it, vi, beforeEach, type Mock, afterEach } from 'vite
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/dom'
 
-import { SideBackground, styles } from '@/components/ui/sidebar/side-decorations/SideBackground'
-import { useUiStore } from '@/stores'
+import { SideBackground, styles } from '@/shared/components/sidebar/side-decorations/SideBackground'
+import { useUiStore } from '@/shared/stores'
 
 // Mocks
 const mockUseUiStore = useUiStore as unknown as Mock
 
-vi.mock('@/stores', () => ({
+vi.mock('@/shared/stores', () => ({
   useUiStore: vi.fn()
 }))
 
