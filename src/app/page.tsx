@@ -1,4 +1,4 @@
-import { BackgroundDecoration } from "@/components/home/BackgroundDecoration";
+import { BackgroundDecoration } from "@/features/home/components/BackgroundDecoration";
 
 export default function Home() {
   return (
