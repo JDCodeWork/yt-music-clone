@@ -8,14 +8,16 @@ type ManagedDialogProps = {
 };
 
 export const ManagedDialog = ({ name, children }: ManagedDialogProps) => {
-  const { isOpen } = useDialog();
+  const { isOpen, close } = useDialog();
 
   if (!isOpen(name)) return null;
 
   return (
     <DialogPortal>
-      <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-        {children}
+      <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={close}>
+        <div onClick={(e) => e.stopPropagation()} >
+          {children}
+        </div>
       </div>
     </DialogPortal>
   );
