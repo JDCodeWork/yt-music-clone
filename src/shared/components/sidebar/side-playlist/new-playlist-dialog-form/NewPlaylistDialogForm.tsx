@@ -14,6 +14,7 @@ type FormValues = {
 export const NewPlaylistDialogForm = () => {
   const dialogName = 'new-playlist-form'
   const [formValues, setFormValues] = useState<Partial<FormValues>>({})
+  const [formErrors, setFormErrors] = useState<Partial<keyof FormValues>[]>([])
 
   const { close } = useDialog()
 
@@ -26,8 +27,12 @@ export const NewPlaylistDialogForm = () => {
   }
 
   const handleCreatePlaylist = () => {
+    if (!formValues.title) {
+      setFormErrors(prev => [...prev, 'title']);
+      return;
+    }
+
     alert('TODO: Implement create playlist logic');
-    console.log(formValues)
     close()
   }
 
@@ -49,14 +54,22 @@ export const NewPlaylistDialogForm = () => {
             <input
               type="text"
               name="title"
-              className="peer w-full pb-1 border-b-2 border-stone-600 bg-transparent focus:outline-none mt-2 focus:border-sky-400 caret-sky-400 transition-colors"
+              className={`peer w-full pb-1 border-b-2 ${formErrors.includes('title') ? 'border-red-400' : 'border-stone-600 focus:border-sky-400'} bg-transparent focus:outline-none mt-2  caret-sky-400 transition-colors`}
               placeholder=" "
               value={formValues?.title || ''}
-              onChange={handleInputChange}
+              onChange={(e) => {
+                handleInputChange(e)
+                if (formErrors.includes('title')) {
+                  setFormErrors(prev => prev.filter(error => error !== 'title'));
+                }
+              }}
               autoFocus
             />
+            {formErrors.includes('title') && (
+              <span className="text-red-400 text-sm">Este campo es obligatorio</span>
+            )}
             <span
-              className="absolute left-0 -top-4 text-sm text-stone-400 transition-all duration-200 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base select-none"
+              className={`absolute left-0 -top-4 text-sm ${formErrors.includes('title') ? "text-red-400" : "text-stone-400"} transition-all duration-200 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base select-none`}
             >
               Titulo
             </span>
