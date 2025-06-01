@@ -11,7 +11,7 @@ import { useDialog } from "../context/DialogContext";
 export const DemoAlert = () => {
   const dialogName = "demo-alert";
 
-  const { close, open } = useDialog()
+  const { close } = useDialog()
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -24,12 +24,8 @@ export const DemoAlert = () => {
     }
   }, [])
 
-  useEffect(() => {
-    open(dialogName);
-  }, [open]);
-
   return (
-    <ManagedDialog name={dialogName}>
+    <ManagedDialog name={dialogName} initialOpen>
       <div
         className="flex flex-col gap-6 w-full max-w-2xl max-h-xl bg-stone-900 px-4 py-6 z-50 rounded-lg"
       >
