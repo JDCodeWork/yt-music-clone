@@ -3,11 +3,33 @@
 import { ManagedDialog } from "@/shared/components";
 import { useDialog } from "@/shared/context/DialogContext";
 import { PrivacySelect } from "./PrivacySelect";
+import { useState } from "react";
+
+type FormValues = {
+  title: string;
+  description: string;
+  privacy: string;
+}
 
 export const NewPlaylistDialogForm = () => {
   const dialogName = 'new-playlist-form'
+  const [formValues, setFormValues] = useState<Partial<FormValues>>({})
 
   const { close } = useDialog()
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormValues(prevValues => ({
+      ...prevValues,
+      [name]: value
+    }));
+  }
+
+  const handleCreatePlaylist = () => {
+    alert('TODO: Implement create playlist logic');
+    console.log(formValues)
+    close()
+  }
 
   return (
     <ManagedDialog
@@ -15,7 +37,7 @@ export const NewPlaylistDialogForm = () => {
       closeOpts={{ closeOnOutsideClick: true, closeOnEscape: true }}
     >
       <div
-        className="flex flex-col gap-6 w-2xl max-h-xl bg-stone-900 pl-8 py-6 rounded-lg"
+        className="flex flex-col gap-6 w-2xl max-h-xl bg-stone-900 border-2 border-stone-800 pl-8 py-6 rounded-lg"
       >
         <header className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-black text-stone-200 flex gap-4 justify-center items-center">
@@ -29,9 +51,12 @@ export const NewPlaylistDialogForm = () => {
               name="title"
               className="peer w-full pb-1 border-b-2 border-stone-600 bg-transparent focus:outline-none mt-2 focus:border-sky-400 caret-sky-400 transition-colors"
               placeholder=" "
+              value={formValues?.title || ''}
+              onChange={handleInputChange}
+              autoFocus
             />
             <span
-              className="absolute left-0 -top-4 text-sm text-stone-400 transition-all duration-200 peer-placeholder-shown:top-1.5 peer-placeholder-shown:text-base select-none"
+              className="absolute left-0 -top-4 text-sm text-stone-400 transition-all duration-200 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base select-none"
             >
               Titulo
             </span>
@@ -42,6 +67,8 @@ export const NewPlaylistDialogForm = () => {
               className="peer w-full pb-1 border-b-2 border-stone-600 bg-transparent focus:outline-none mt-2 focus:border-sky-400 caret-sky-400 transition-colors resize-none overflow-hidden"
               placeholder=" "
               rows={1}
+              value={formValues?.description || ''}
+              onChange={handleInputChange}
               onInput={(e) => {
                 const target = e.currentTarget;
                 target.style.height = "auto";
@@ -49,13 +76,13 @@ export const NewPlaylistDialogForm = () => {
               }}
             />
             <span
-              className="absolute left-0 -top-4 text-sm text-stone-400 transition-all duration-200 peer-placeholder-shown:top-1.5 peer-placeholder-shown:text-base select-none"
+              className="absolute left-0 -top-4 text-sm text-stone-400 transition-all duration-200 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base select-none"
             >
               Descripción
             </span>
           </label>
 
-          <PrivacySelect />
+          <PrivacySelect onSelect={(privacy) => setFormValues(prev => ({ ...prev, privacy }))} />
 
           <div className="flex justify-end gap-4">
             <button
@@ -65,6 +92,7 @@ export const NewPlaylistDialogForm = () => {
             >Cancelar</button>
             <button
               className="px-4 py-2 bg-stone-200 text-stone-800 font-bold hover:bg-stone-300 rounded-full  transition-colors cursor-pointer"
+              onClick={handleCreatePlaylist}
             >Crear</button>
           </div>
         </div>
