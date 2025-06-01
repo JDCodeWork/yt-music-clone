@@ -1,7 +1,6 @@
 'use client';
 
-import { IoClose } from "react-icons/io5";
-import { ManagedDialog } from "../../../dialog/ManagedDialog";
+import { ManagedDialog } from "@/shared/components";
 import { useDialog } from "@/shared/context/DialogContext";
 import { PrivacySelect } from "./PrivacySelect";
 
@@ -11,7 +10,10 @@ export const NewPlaylistDialogForm = () => {
   const { close } = useDialog()
 
   return (
-    <ManagedDialog name={dialogName}>
+    <ManagedDialog
+      name={dialogName}
+      closeOpts={{ closeOnOutsideClick: true, closeOnEscape: true }}
+    >
       <div
         className="flex flex-col gap-6 w-2xl max-h-xl bg-stone-900 pl-8 py-6 rounded-lg"
       >
@@ -53,7 +55,7 @@ export const NewPlaylistDialogForm = () => {
             </span>
           </label>
 
-{/*           <PrivacySelect /> */}
+          <PrivacySelect />
 
           <div className="flex justify-end gap-4">
             <button
