@@ -1,8 +1,7 @@
 'use client'
-
 import { useDialog } from "@/shared/context/DialogContext";
+import { useRef, useEffect, useState } from "react";
 import { DialogPortal } from "./DialogPortal";
-import { useEffect, useState } from "react";
 
 type DialogCloseOpts = {
   closeOnEscape?: boolean;
@@ -18,7 +17,9 @@ type ManagedDialogProps = {
 export const ManagedDialog = ({ name, children, closeOpts }: ManagedDialogProps) => {
   const { closeOnEscape = false, closeOnOutsideClick = false } = closeOpts || {};
   const { isOpen, close } = useDialog();
-  const [dialogIsOpen, setDialogIsOpen] = useState(false)
+  const [dialogIsOpen, setDialogIsOpen] = useState(false);
+
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isOpen(name)) {
@@ -28,6 +29,21 @@ export const ManagedDialog = ({ name, children, closeOpts }: ManagedDialogProps)
     }
   }, [isOpen, name]);
 
+  // Detect if the click is outside the dialog
+  useEffect(() => {
+    if (!dialogIsOpen || !closeOnOutsideClick) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dialogRef.current && !dialogRef.current.contains(event.target as Node)) {
+        close();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [dialogIsOpen, closeOnOutsideClick]);
+
+  // Escape key
   useEffect(() => {
     if (!dialogIsOpen) return;
 
@@ -39,19 +55,15 @@ export const ManagedDialog = ({ name, children, closeOpts }: ManagedDialogProps)
     };
 
     document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [dialogIsOpen, closeOnEscape]);
 
-  if (dialogIsOpen) return (
+  if (!dialogIsOpen) return null;
+
+  return (
     <DialogPortal>
-      <div
-        className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
-        onClick={() => closeOnOutsideClick && close()}
-      >
-        <div onClick={(e) => e.stopPropagation()} >
+      <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div ref={dialogRef}>
           {children}
         </div>
       </div>
