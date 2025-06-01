@@ -12,14 +12,21 @@ type ManagedDialogProps = {
   name: string;
   children: React.ReactNode;
   closeOpts?: DialogCloseOpts;
+  initialOpen?: boolean;
 };
 
-export const ManagedDialog = ({ name, children, closeOpts }: ManagedDialogProps) => {
+export const ManagedDialog = ({ name, children, closeOpts, initialOpen }: ManagedDialogProps) => {
   const { closeOnEscape = false, closeOnOutsideClick = false } = closeOpts || {};
-  const { isOpen, close } = useDialog();
+  const { isOpen, close, open } = useDialog();
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
 
   const dialogRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (initialOpen) {
+      open(name);
+    }
+  }, []);
 
   useEffect(() => {
     if (isOpen(name)) {
@@ -27,7 +34,7 @@ export const ManagedDialog = ({ name, children, closeOpts }: ManagedDialogProps)
     } else {
       setDialogIsOpen(false);
     }
-  }, [isOpen, name, ]);
+  }, [isOpen, name]);
 
   // Detect if the click is outside the dialog
   useEffect(() => {
