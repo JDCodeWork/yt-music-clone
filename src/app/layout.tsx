@@ -5,7 +5,6 @@ import { bodyFont } from "@/app/configs/fonts";
 import { DemoAlert, Sidebar } from "@/shared/components";
 import { Navbar } from "@/shared/components/navbar/Navbar";
 import { DialogProvider } from "@/shared/context/DialogContext";
-import { NewPlaylistDialogForm } from "@/shared/components/sidebar/side-playlist/new-playlist-dialog-form/NewPlaylistDialogForm";
 
 export const metadata: Metadata = {
   title: "YouTube Music",

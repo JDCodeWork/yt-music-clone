@@ -10,9 +10,9 @@ type DialogContextType = {
 };
 const DialogContext = createContext<DialogContextType>({
   activeDialog: null,
-  open: (name) => { },
-  close: () => { },
-  isOpen: (name) => false,
+  close: () => {},
+  isOpen: () => false,
+  open: () => {},
 });
 
 export const DialogProvider = ({ children }: { children: ReactNode }) => {

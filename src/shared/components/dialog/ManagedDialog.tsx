@@ -27,7 +27,7 @@ export const ManagedDialog = ({ name, children, closeOpts }: ManagedDialogProps)
     } else {
       setDialogIsOpen(false);
     }
-  }, [isOpen, name]);
+  }, [isOpen, name, ]);
 
   // Detect if the click is outside the dialog
   useEffect(() => {
@@ -41,7 +41,7 @@ export const ManagedDialog = ({ name, children, closeOpts }: ManagedDialogProps)
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [dialogIsOpen, closeOnOutsideClick]);
+  }, [dialogIsOpen, closeOnOutsideClick, close]);
 
   // Escape key
   useEffect(() => {
@@ -56,7 +56,7 @@ export const ManagedDialog = ({ name, children, closeOpts }: ManagedDialogProps)
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [dialogIsOpen, closeOnEscape]);
+  }, [dialogIsOpen, closeOnEscape, close]);
 
   if (!dialogIsOpen) return null;
 
