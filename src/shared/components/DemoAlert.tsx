@@ -24,9 +24,9 @@ export const DemoAlert = () => {
     }
   }, [])
 
-  useEffect(() => {
+/*   useEffect(() => {
     open(dialogName);
-  }, []);
+  }, []); */
 
   return (
     <ManagedDialog name={dialogName}>

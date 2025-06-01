@@ -29,7 +29,6 @@ export default function RootLayout({
 
           <div id="portal-root" />
           <DemoAlert />
-          <NewPlaylistDialogForm />
         </DialogProvider>
       </body>
     </html>
