@@ -25,7 +25,7 @@ export const DemoAlert = () => {
   }, [])
 
   return (
-    <ManagedDialog name={dialogName} initialOpen>
+    <ManagedDialog name={dialogName} initialOpen={false}>
       <div
         className="flex flex-col gap-6 w-full max-w-2xl max-h-xl bg-stone-900 px-4 py-6 z-50 rounded-lg"
       >

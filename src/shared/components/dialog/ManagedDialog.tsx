@@ -26,7 +26,7 @@ export const ManagedDialog = ({ name, children, closeOpts, initialOpen }: Manage
     if (initialOpen) {
       open(name);
     }
-  }, []);
+  }, [initialOpen, name, open]);
 
   useEffect(() => {
     if (isOpen(name)) {

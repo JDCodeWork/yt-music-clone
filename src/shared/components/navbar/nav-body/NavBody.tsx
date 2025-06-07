@@ -3,7 +3,7 @@
 import { useUiStore } from "@/shared/stores"
 import { SearchBar } from "./SearchBar"
 import clsx from "clsx"
-import { NavProfile } from "./NavProfile"
+import { NavProfile } from "./nav-profile/NavProfile"
 
 export const NavBody = () => {
   const isOpenMenu = useUiStore(s => s.isOpenSideMenu)

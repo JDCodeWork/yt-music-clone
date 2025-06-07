@@ -3,6 +3,7 @@
 import { AiOutlineMenu } from "react-icons/ai"
 import Link from "next/link"
 import { toggleSideMenu } from "@/shared/stores"
+import Image from "next/image"
 
 export const NavHeader = () => {
   return (
@@ -15,7 +16,7 @@ export const NavHeader = () => {
         <AiOutlineMenu className="size-6" />
       </button>
       <Link href="/" className="my-2">
-        <img src="https://music.youtube.com/img/on_platform_logo_dark.svg" alt="YouTube Music Logo" className="h-8" />
+        <Image src="https://music.youtube.com/img/on_platform_logo_dark.svg" alt="YouTube Music Logo" width={120} height={32} className="h-8" />
       </Link>
     </header>
   )

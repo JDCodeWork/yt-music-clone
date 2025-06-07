@@ -7,6 +7,7 @@ import { ArtistsLinks } from "./ArtistsLinks";
 import { setSearchValue } from "@/shared/stores";
 import clsx from "clsx";
 import type { SearchPlayItem } from "@/shared/data/search.data";
+import Image from "next/image";
 
 interface Props {
   data: SearchPlayItem
@@ -34,7 +35,7 @@ export const ResultPlay = ({
     >
       {/* Image */}
       <div className="relative size-8 rounded-xs">
-        <img src={image} alt={name} className="size-full object-center" width={32} height={32} />
+        <Image src={image} alt={name} className="size-full object-center" width={32} height={32} />
         <div className="hidden absolute inset-0 bg-stone-950/90 group-hover/play:block" />
         <FaPlay className="hidden absolute top-2 left-[10px] group-hover/play:block" />
       </div>
