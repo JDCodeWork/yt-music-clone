@@ -12,7 +12,7 @@ export const SidePlaylist = () => {
         <ul className="h-full overflow-y-scroll flex flex-col gap-2">
           {
             USER_PLAYLIST.map(playlist => (
-              <li key={playlist.id} > <PlaylistLink {...playlist} /> </li>
+              <li key={playlist.id}> <PlaylistLink {...playlist} /> </li>
             ))
           }
         </ul>

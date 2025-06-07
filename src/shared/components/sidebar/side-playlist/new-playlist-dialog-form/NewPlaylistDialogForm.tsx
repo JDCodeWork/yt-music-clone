@@ -68,11 +68,11 @@ export const NewPlaylistDialogForm = () => {
             {formErrors.includes('title') && (
               <span className="text-red-400 text-sm">Este campo es obligatorio</span>
             )}
-            <span
+            <p
               className={`absolute left-0 -top-4 text-sm ${formErrors.includes('title') ? "text-red-400" : "text-stone-400"} transition-all duration-200 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base select-none`}
             >
               Titulo
-            </span>
+            </p>
           </label>
           <label className="relative w-full h-full cursor-text">
             <textarea
@@ -88,11 +88,11 @@ export const NewPlaylistDialogForm = () => {
                 target.style.height = `${target.scrollHeight}px`;
               }}
             />
-            <span
+            <p
               className="absolute left-0 -top-4 text-sm text-stone-400 transition-all duration-200 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base select-none"
             >
               Descripción
-            </span>
+            </p>
           </label>
 
           <PrivacySelect onSelect={(privacy) => setFormValues(prev => ({ ...prev, privacy }))} />

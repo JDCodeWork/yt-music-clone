@@ -71,9 +71,9 @@ export const SideLinkItem = ({ icon: Icon, title, to }: Props) => {
         )}
       >
         <Icon className="size-7" />
-        <span
+        <p
           className={clsx(isOpenMenu ? styles.title.status.expanded : styles.title.status.default)}
-        >{title}</span>
+        >{title}</p>
       </div>
     </Link>
   )

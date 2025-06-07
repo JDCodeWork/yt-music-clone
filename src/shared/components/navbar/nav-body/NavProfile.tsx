@@ -1,6 +1,7 @@
 'use client'
 
 import { USER_PROFILE } from "@/shared/data/user.data"
+import Image from "next/image"
 
 export const NavProfile = () => {
   const user = USER_PROFILE
@@ -25,7 +26,7 @@ export const NavProfile = () => {
       onClick={handleClick}
       onKeyDown={handleKeyDown}
     >
-      <img src={user.image} alt="user-image" />
+      <Image width={36} height={36} src={user.image || ""} alt="user-image" />
     </div>
   )
 }
