@@ -330,3 +330,16 @@ export const SEARCH_PLAY: SearchPlayItem[] = [
     views: "442 M reproducciones"
   }
 ].map(val => ({ ...val, type: "playable" }))
+
+export const TOPICS_TAGS = [
+  "Relajación",
+  "Energía",
+  "Para sentirte bien",
+  "Fiesta",
+  "Entrenamiento",
+  "Romance",
+  "Viaje Diario",
+  "Triste",
+  "Concentración",
+  "Sueño"
+]
