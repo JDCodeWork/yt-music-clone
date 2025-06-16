@@ -10,7 +10,7 @@ export const TopicList = () => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null)
 
   return (
-    <div className="flex gap-3 py-4">
+    <div className="flex gap-3 py-4 max-w-[1200px] overflow-x-auto">
       {topics.map((topic) => (
         <TopicItem label={topic} isSelected={selectedTag === topic} key={topic} onSelect={setSelectedTag} />
       ))}

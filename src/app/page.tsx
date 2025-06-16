@@ -1,5 +1,6 @@
-import { BackgroundDecoration, TopicList } from "@/features/home/components";
 import { Container } from "@/shared/components";
+
+import { BackgroundDecoration, ReListen, TopicList } from "@/features/home/components";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <BackgroundDecoration />
       <Container>
         <TopicList />
+        <ReListen />
       </Container>
     </>
   );
