@@ -1,3 +1,4 @@
+import { SimpleBtn } from "@/shared/components"
 import { USER_PROFILE } from "@/shared/data/user.data"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
 
@@ -15,17 +16,17 @@ export const Header = () => {
         </p>
       </div>
       {/* Action Buttons */}
-      <div className="flex items-center gap-12">
-        <button className="bg-stone-800/15 border-2 border-stone-800 rounded-4xl text-stone-100 px-4 py-2 hover:bg-stone-800 transition-colors">
+      <div className="flex items-center gap-8">
+        <SimpleBtn>
           Más
-        </button>
-        <div className="flex items-center gap-4">
-          <button className="bg-stone-800/15 cursor-pointer border-2 border-stone-800 rounded-4xl text-stone-100 p-3 hover:bg-stone-800 transition-colors disabled:border-stone-400/5 disabled:bg-transparent disabled:text-stone-800 disabled:hover:border-stone-800/50 disabled:cursor-default" disabled>
+        </SimpleBtn>
+        <div className="flex items-center gap-3">
+          <SimpleBtn size="icon" disabled>
             <IoIosArrowBack className="size-4" />
-          </button>
-          <button className="bg-stone-800/15 cursor-pointer border-2 border-stone-800 rounded-4xl text-stone-100 p-3 hover:bg-stone-800 transition-colors disabled:border-stone-400/5 disabled:bg-transparent disabled:text-stone-800 disabled:hover:border-stone-800/50 disabled:cursor-default">
+          </SimpleBtn>
+          <SimpleBtn size="icon">
             <IoIosArrowForward className="size-4" />
-          </button>
+          </SimpleBtn>
         </div>
       </div>
     </div>

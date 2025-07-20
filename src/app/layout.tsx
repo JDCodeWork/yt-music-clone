@@ -2,8 +2,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { bodyFont } from "@/app/configs/fonts";
-import { DemoAlert, Sidebar } from "@/shared/components";
-import { Navbar } from "@/shared/components/navbar/Navbar";
+import { DemoAlert, Navbar, Sidebar } from "@/shared/components";
 import { DialogProvider } from "@/shared/context/DialogContext";
 
 export const metadata: Metadata = {
