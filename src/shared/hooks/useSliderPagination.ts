@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react"
 
 interface UseSliderPaginationProps {
-  itemsPerPage?: number
   totalItems: number
 }
 
-export const useSliderPagination = ({ itemsPerPage = 4, totalItems }: UseSliderPaginationProps) => {
+export const useSliderPagination = ({ totalItems }: UseSliderPaginationProps) => {
   const [currentPage, setCurrentPage] = useState(1)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
 

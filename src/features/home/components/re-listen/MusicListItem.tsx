@@ -6,9 +6,8 @@ interface Props {
   title: string
   thumbnail: string
   author: string
-  className?: string
 }
-export const MusicListItem = ({ title, thumbnail, author, className }: Props) => {
+export const MusicListItem = ({ title, thumbnail }: Props) => {
   return (
     <div className="shrink-0">
       <div className="relative group cursor-pointer">
