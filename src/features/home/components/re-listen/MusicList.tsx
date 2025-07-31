@@ -15,7 +15,6 @@ export const MusicList = () => {
           <MusicListItem
             key={m.title}
             {...m}
-            className="flex-shrink-0"
           />
         ))}
       </div>

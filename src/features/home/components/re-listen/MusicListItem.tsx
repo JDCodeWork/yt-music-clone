@@ -1,4 +1,3 @@
-import Image from "next/image"
 import { FaPlay } from "react-icons/fa6"
 import { SlOptionsVertical } from "react-icons/sl"
 
