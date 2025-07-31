@@ -1,15 +1,15 @@
-import { Container } from "@/shared/components";
 
 import { BackgroundDecoration, ReListen, TopicList } from "@/features/home/components";
+import { MainContainer } from "@/shared/components";
 
 export default function Home() {
   return (
     <>
       <BackgroundDecoration />
-      <Container>
+      <MainContainer>
         <TopicList />
         <ReListen />
-      </Container>
+      </MainContainer>
     </>
   );
 }

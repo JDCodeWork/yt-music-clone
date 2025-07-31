@@ -6,7 +6,7 @@ export const Header = () => {
   const user = USER_PROFILE
 
   return (
-    <div className="flex w-full max-w-[1200px] justify-between items-center">
+    <div className="flex w-full justify-between items-center ">
       {/* User Profile */}
       <div className="flex items-center gap-4">
         <img src={user.image} alt={user.name} className="size-16 rounded-full" />
