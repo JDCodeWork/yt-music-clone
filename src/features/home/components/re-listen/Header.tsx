@@ -1,18 +1,28 @@
 import { SimpleBtn } from "@/shared/components"
 import { USER_PROFILE } from "@/shared/data/user.data"
+import Image from "next/image"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
+import { useSlider } from "./SliderContext"
 
 export const Header = () => {
+  const {
+    totalPages,
+    canGoPrevious,
+    canGoNext,
+    goToPreviousPage,
+    goToNextPage
+  } = useSlider()
+
   const user = USER_PROFILE
 
   return (
     <div className="flex w-full justify-between items-center ">
       {/* User Profile */}
       <div className="flex items-center gap-4">
-        <img src={user.image} alt={user.name} className="size-16 rounded-full" />
-        <p className="flex flex-col gap-1">
+        <Image src={user.image} alt={user.name} className="size-16 rounded-full" width={64} height={64} />
+        <p className="flex flex-col gap-0.5">
           <span className="text-stone-400 uppercase">{user.name}</span>
-          <span className="text-stone-100 text-3xl font-bold tracking-wide">Volver a escuchar</span>
+          <span className="text-stone-100 text-3xl font-black tracking-wide">Volver a escuchar</span>
         </p>
       </div>
       {/* Action Buttons */}
@@ -20,14 +30,16 @@ export const Header = () => {
         <SimpleBtn>
           Más
         </SimpleBtn>
-        <div className="flex items-center gap-3">
-          <SimpleBtn size="icon" disabled>
-            <IoIosArrowBack className="size-4" />
-          </SimpleBtn>
-          <SimpleBtn size="icon">
-            <IoIosArrowForward className="size-4" />
-          </SimpleBtn>
-        </div>
+        {totalPages > 1 && (
+          <div className="flex items-center gap-3">
+            <SimpleBtn size="icon" disabled={!canGoPrevious} onClick={goToPreviousPage}>
+              <IoIosArrowBack className="size-4" />
+            </SimpleBtn>
+            <SimpleBtn size="icon" disabled={!canGoNext} onClick={goToNextPage}>
+              <IoIosArrowForward className="size-4" />
+            </SimpleBtn>
+          </div>
+        )}
       </div>
     </div>
   )
