@@ -3,6 +3,7 @@ import { USER_PROFILE } from "@/shared/data/user.data"
 import Image from "next/image"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
 import { useSlider } from "./SliderContext"
+import Link from "next/link"
 
 export const Header = () => {
   const {
@@ -27,9 +28,11 @@ export const Header = () => {
       </div>
       {/* Action Buttons */}
       <div className="flex items-center gap-8">
-        <SimpleBtn>
-          Más
-        </SimpleBtn>
+        <Link href='/listen_again'>
+          <SimpleBtn>
+            Más
+          </SimpleBtn>
+        </Link>
         {totalPages > 1 && (
           <div className="flex items-center gap-3">
             <SimpleBtn size="icon" disabled={!canGoPrevious} onClick={goToPreviousPage}>

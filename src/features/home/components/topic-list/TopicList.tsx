@@ -9,11 +9,16 @@ export const TopicList = () => {
 
   const [selectedTag, setSelectedTag] = useState<string | null>(null)
 
+  const handleSelect = (selectedLabel: string) => {
+    if (selectedLabel == selectedTag) setSelectedTag(null)
+    else setSelectedTag(selectedLabel)
+  }
+
   return (
     <div className="w-full overflow-x-auto">
       <div className="flex gap-3 py-4 min-w-auto">
         {topics.map((topic) => (
-          <TopicItem label={topic} isSelected={selectedTag === topic} key={topic} onSelect={setSelectedTag} />
+          <TopicItem label={topic} isSelected={selectedTag === topic} key={topic} onSelect={handleSelect} />
         ))}
       </div>
     </div>

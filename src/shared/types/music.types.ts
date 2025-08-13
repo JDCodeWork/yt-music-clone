@@ -5,16 +5,11 @@ interface Base {
   duration: number // in seconds
 }
 
-interface Song extends Base {
-  category: 'song'
-  album: string
-  year: number
+export interface Music extends Base {
+  category: 'song' | 'video'
+  album?: string
+  year?: number
+  views?: number
+  likes?: number
 }
 
-interface Video extends Base {
-  category: 'video'
-  views: number
-  likes: number
-}
-
-export type Music = Song | Video

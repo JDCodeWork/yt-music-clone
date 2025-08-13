@@ -1,6 +1,7 @@
 import { REPLAY } from "@/shared/data/music.data"
 import { MusicListItem } from "./MusicListItem"
 import { useSlider } from "./SliderContext"
+import { formatMusicViews } from "@/shared/lib/format-music-views"
 
 export const MusicList = () => {
   const { scrollContainerRef } = useSlider()
@@ -14,7 +15,10 @@ export const MusicList = () => {
         {REPLAY.map(m => (
           <MusicListItem
             key={m.title}
-            {...m}
+            author={m.author}
+            details={m.views ? `${formatMusicViews(m.views)} de vistas` : `Canción`}
+            thumbnail={m.thumbnail}
+            title={m.title}
           />
         ))}
       </div>

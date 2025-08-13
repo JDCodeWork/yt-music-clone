@@ -44,6 +44,22 @@ export const REPLAY: Music[] = [
     duration: 261
   },
   {
+    title: "Sol",
+    thumbnail: "https://lh3.googleusercontent.com/VHZFGOYIKilied2n2shevQUNODCu6vN0JRRRV9dKZjzNT9mfeZ4DAvSc3ibK5ely3JUUgC1VePOKbgH9=w226-h226-l90-rj",
+    category: 'video',
+    duration: 140,
+    author: 'Willian',
+    views: 46000000,
+  },
+  {
+    title: 'Me Gustas Tu',
+    thumbnail: "https://lh3.googleusercontent.com/7Q6yaf9TgzaCA_oXzXoSVWzRxC5EqSN7ljJsXXBthpqkhhiBr4QQm2WhdMdh6KjCL25Ifsg8Ut4px95R=w226-h226-l90-rj",
+    category: 'video',
+    duration: 241,
+    author: 'Manu chao',
+    views: 667000000,
+  },
+  {
     title: "Besame Sin Sentir",
     category: "video",
     author: "Micro TDH",
@@ -60,6 +76,24 @@ export const REPLAY: Music[] = [
     likes: 359000,
     duration: 213,
     thumbnail: "https://i.ytimg.com/vi/-xBB6TJv8HA/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&rs=AMzJL3knPMgNjIV2AhQ-eN8Ap46qiXDIuw"
+  },
+  {
+    title: "Flaca",
+    category: 'video',
+    author: "Nanpa Básico",
+    views: 143000000,
+    duration: 204,
+    thumbnail: "https://i.ytimg.com/vi/gDyjzFwrW5o/sddefault.jpg?sqp=-oaymwEWCJADEOEBIAQqCghqEJQEGHgg6AJIWg&rs=AMzJL3kJt6f9JVR3B1aAa3lqRmSseNDV7A"
+  },
+  {
+    title: "Ojitos Chiquitos",
+    category: "song",
+    author: "Don Omar",
+    album: "King Of Kings",
+    year: 2006,
+    duration: 230,
+    thumbnail: "https://lh3.googleusercontent.com/4aMe8qk7jE4BR_fmV_XMNKvHUMSLD6jnAeEP8_NyFhlC5N12ikoSDrv9-NDI-76ejCca4hpaGXo4KIyqRA=w226-h226-l90-rj",
+    
   }
 ]
 
